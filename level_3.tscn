@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://wwj1qpy7miiq"]
+[gd_scene load_steps=10 format=3 uid="uid://ne2fi8pfthaf"]
 
-[ext_resource type="Script" path="res://LandingPad.gd" id="1_nsxp1"]
-[ext_resource type="PackedScene" uid="uid://bonu5yu1lccu8" path="res://player.tscn" id="1_tgo0v"]
+[ext_resource type="Script" path="res://LandingPad.gd" id="1_16786"]
+[ext_resource type="PackedScene" uid="uid://bonu5yu1lccu8" path="res://player.tscn" id="2_kodiw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nab7d"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,6 +18,9 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pgcd"]
 albedo_color = Color(0.603922, 0.407843, 0.262745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnuj4"]
+albedo_color = Color(0.937255, 0.607843, 0.882353, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wv71c"]
 albedo_color = Color(0.388235, 1, 1, 1)
@@ -40,6 +43,12 @@ use_collision = true
 size = Vector3(30, 8, 5)
 material = SubResource("StandardMaterial3D_0pgcd")
 
+[node name="Obstacle" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0354385, 6.62507, -0.268362)
+use_collision = true
+size = Vector3(3, 2, 5)
+material = SubResource("StandardMaterial3D_gnuj4")
+
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.2, 0)
 use_collision = true
@@ -51,11 +60,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.2, -0.008)
 use_collision = true
 size = Vector3(2, 0.4, 2)
 material = SubResource("StandardMaterial3D_pnuea")
-script = ExtResource("1_nsxp1")
-file_path = "res://level_2.tscn"
+script = ExtResource("1_16786")
+file_path = "res://level_4.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 4.5, 8)
 
-[node name="Player" parent="." instance=ExtResource("1_tgo0v")]
+[node name="Player" parent="." instance=ExtResource("2_kodiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.4, 0)
